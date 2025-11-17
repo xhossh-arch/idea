@@ -1,1 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AdHub — платформа размещения рекламы (скелет)</title>
 
+  <!-- Место для подключения внешних стилей (Tailwind, custom.css) -->
+  <!-- <link rel="stylesheet" href="styles.css"> -->
+
+  <style>
+    /* Минимальные стили для читабельности — позже заменим на полноценную тему/анимации */
+    :root{
+      --bg:#f7f7fb;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --border:#e6e7ea;
+      --accent:#111827;
+      --radius:12px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Inter, Roboto, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial;
+      background:var(--bg);
+      color:var(--accent);
+      -webkit-font-smoothing:antialiased;
+    }
+    a{color:inherit}
+    header{
+      background:var(--card);
+      border-bottom:1px solid var(--border);
+      position:sticky;
+      top:0;
+      z-index:50;
+    }
+    .container{
+      max-width:1200px;
+      margin:0 auto;
+      padding:18px;
+    }
+
+    .header-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:46px;height:46px;background:#ececec;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700}
+    nav button{background:transparent;border:0;padding:8px 10px;border-radius:8px;cursor:pointer}
+    nav button:hover{background:#f1f2f4}
+
+    main{padding:22px 0}
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:18px;
+    }
+    /* на больших экранах — две колонки: контент + сайдбар */
+    @media(min-width:1000px){
+      .grid{grid-template-columns: 2fr 1fr}
+    }
+
+    .panel{
+      backgrou
+
+      
