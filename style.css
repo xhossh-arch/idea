@@ -1,1 +1,216 @@
+/* styles.css
+   Современная минимальная тема для AdHub.
+   - Подходит для замены встроенных <style> в index.html.
+   - Файловая структура: подключи этот файл в head.
+*/
+
+/* ========== ПЕРЕМЕННЫЕ ========== */
+:root{
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --border: #e6e7ea;
+  --accent: #0f1724;
+  --accent-strong: #0b1220;
+  --primary: #1f6feb;
+  --success: #16a34a;
+  --danger: #ef4444;
+  --glass: rgba(255,255,255,0.6);
+  --radius: 12px;
+  --shadow-1: 0 6px 18px rgba(17,24,39,0.06);
+  --shadow-2: 0 10px 30px rgba(17,24,39,0.08);
+  --transition: 220ms cubic-bezier(.2,.9,.3,1);
+  --max-width: 1200px;
+  --container-padding: 18px;
+}
+
+/* Общие сбросы */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: Inter, "Roboto", system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  background:var(--bg);
+  color:var(--accent);
+  line-height:1.45;
+  font-size:15px;
+}
+
+/* Контейнер */
+.container{
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:var(--container-padding);
+}
+
+/* ========== HEADER ========== */
+header{
+  background:linear-gradient(180deg, var(--card), rgba(255,255,255,0.9));
+  border-bottom:1px solid var(--border);
+  position:sticky;
+  top:0;
+  z-index:60;
+  backdrop-filter: blur(4px);
+}
+.header-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{
+  width:46px;height:46px;border-radius:10px;
+  background:linear-gradient(180deg,#f3f4f6,#fff);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;color:var(--accent-strong);
+  box-shadow:var(--shadow-1);
+}
+
+/* Навигация */
+nav{display:flex;gap:8px;align-items:center}
+nav button{
+  background:transparent;border:0;padding:8px 10px;border-radius:10px;cursor:pointer;
+  color:var(--accent);font-weight:600;font-size:14px;
+  transition:background var(--transition), transform var(--transition);
+}
+nav button:hover{background:#f4f6fb; transform:translateY(-2px)}
+
+/* ========== MAIN LAYOUT ========== */
+main{padding:22px 0}
+.grid{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:20px;
+}
+
+/* desktop: content 2fr, sidebar 1fr */
+@media(min-width:1000px){
+  .grid{grid-template-columns: 2fr 1fr; align-items:start}
+}
+
+/* Панели/карточки */
+.panel{
+  background:var(--card);
+  border:1px solid var(--border);
+  padding:16px;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow-1);
+  transition:box-shadow var(--transition), transform var(--transition);
+}
+.panel:hover{box-shadow:var(--shadow-2); transform:translateY(-2px)}
+
+/* Контролы */
+.controls{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.controls h2{margin:0;font-size:18px}
+.controls .actions{display:flex;gap:10px;align-items:center}
+
+/* Inputs & buttons */
+input[type="search"], input[type="text"], select, textarea{
+  padding:9px 12px;border-radius:10px;border:1px solid var(--border);background:linear-gradient(180deg,#fff,#fbfdff);
+  outline:none;font-size:14px;min-width:170px;
+  transition:border-color var(--transition), box-shadow var(--transition);
+}
+input:focus{border-color:var(--primary); box-shadow:0 4px 18px rgba(31,111,235,0.08)}
+
+.btn{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:8px 12px;border-radius:10px;border:1px solid var(--border);
+  background:linear-gradient(180deg,#fff,#fafbff); cursor:pointer;
+  font-weight:600;font-size:14px; transition:transform var(--transition), box-shadow var(--transition);
+}
+.btn:hover{transform:translateY(-3px); box-shadow:var(--shadow-1)}
+.btn.primary{
+  background:linear-gradient(180deg,var(--primary), #1558c8);
+  color:#fff;border-color:transparent;
+  box-shadow:0 8px 20px rgba(31,111,235,0.16);
+}
+.btn.ghost{background:transparent;border:1px solid var(--border)}
+
+/* ========== ADS GRID ========== */
+.ads-grid{
+  display:grid;
+  gap:12px;
+  grid-template-columns: repeat(1, 1fr);
+}
+@media(min-width:640px){ .ads-grid{grid-template-columns: repeat(2, 1fr)} }
+@media(min-width:1200px){ .ads-grid{grid-template-columns: repeat(2, 1fr)} }
+
+.ad-slot{
+  display:flex;gap:14px;align-items:flex-start;
+  border:1px dashed var(--border); border-radius:10px; padding:12px;
+  background:linear-gradient(180deg,#fff,#fcfdff);
+  transition:transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  min-height:88px;
+}
+.ad-slot:hover{
+  transform:translateY(-6px);
+  box-shadow:var(--shadow-2);
+  border-color:rgba(31,111,235,0.12);
+}
+
+/* preview + meta */
+.ad-preview{
+  width:140px;height:90px;border-radius:8px;background:#f2f3f6;
+  display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;flex:0 0 140px;
+  border:1px solid var(--border);
+}
+.ad-meta{flex:1;min-width:0}
+.ad-meta h3{margin:0 0 8px 0;font-size:16px;color:var(--accent-strong)}
+.meta-small{font-size:13px;color:var(--muted);margin-bottom:10px}
+
+/* actions inside card */
+.ad-actions{display:flex;gap:8px;flex-wrap:wrap}
+.ad-actions .btn{padding:6px 10px;font-size:13px}
+
+/* ========== SIDEBAR ========== */
+aside .preview-pane{
+  height:160px;border-radius:10px;background:#f6f7fb;
+  display:flex;align-items:center;justify-content:center;color:var(--muted);
+  border:1px solid var(--border);
+}
+
+/* quick list */
+.panel ul{margin:0;padding-left:18px;color:var(--muted);font-size:14px}
+
+/* ========== TABLE / analytics placeholder ========== */
+.table-placeholder{
+  display:block;padding:12px;border-radius:8px;border:1px dashed var(--border);color:var(--muted);
+}
+
+/* ========== FOOTER ========== */
+footer{padding:18px 0;margin-top:26px;text-align:center;color:var(--muted);font-size:13px}
+
+/* ========== TOAST / ALERT (простая анимация) ========== */
+@keyframes toast-in {
+  from{opacity:0; transform:translateY(10px) scale(0.98)}
+  to{opacity:1; transform:translateY(0) scale(1)}
+}
+.toast{
+  position:fixed;right:20px;bottom:20px;background:var(--card);border:1px solid var(--border);
+  padding:10px 14px;border-radius:10px;box-shadow:var(--shadow-2);animation:toast-in 260ms var(--transition) both;
+}
+
+/* ========== Мелкие утилиты ========== */
+.text-muted{color:var(--muted)}
+.flex{display:flex}
+.center{display:flex;align-items:center;justify-content:center}
+
+/* ========== Адаптивные правки ========== */
+@media(max-width:520px){
+  .logo{width:40px;height:40px;font-size:13px}
+  .ad-preview{width:110px;height:70px;flex:0 0 110px}
+  .controls{flex-direction:column;align-items:stretch;gap:10px}
+  nav{display:none} /* можно заменить на бургер позже */
+}
+
+/* ========== Рекомендации для подключения кастомных анимаций/фреймеров ==========
+   - Для плавного появления карточек: использовать .ad-slot {opacity:0; transform:translateY(8px)}
+     и затем добавлять класс .is-visible -> opacity:1 transform:none с transition.
+   - Для drag&drop — добавлять .dragging {opacity:0.85; transform:scale(0.98)}
+*/
+
+/* Конец файла */
 
